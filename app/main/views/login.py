@@ -15,6 +15,10 @@ from ... import data_api_client
 USER_INVITED_FLASH_MESSAGE = "Contributor invited"
 
 
+@main.route("/pricing-input", methods=["GET", "POST"])
+def pricing_input():
+    return render_template("pricing-input.html")
+
 @main.route('/invite-user', methods=["GET", "POST"])
 @login_required
 def invite_user():

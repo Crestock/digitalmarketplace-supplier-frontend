@@ -1,0 +1,34 @@
+{% extends "_base_page.html" %}
+
+{% from "macros/pricing-input/content-loader-macro.j2" import clPricingInput %}
+
+{% block mainContent %}
+{# clPricingInput(question_content, data, errors) #}
+{{ clPricingInput(
+  {
+    "id": "price",
+    "fields": {
+      "minimum_price": "priceMin",
+      "maximum_price": "priceMax",
+      "price_unit": "priceUnit",
+      "price_interval": "priceInterval",
+    },
+    "optional_fields": [
+      "maximum_price",
+      "price_interval",
+    ],
+    "question": "How much does the service cost (excluding VAT)?",
+    "question_advice": "This is an indicative price. Users will be able to refer to your pricing document for more information.",
+  },
+  {
+    "priceMin": 100,
+    "priceMax": 1000,
+  },
+  {
+    "price": {
+      "field": "priceUnit",
+      "message": "Choose a unit.",
+    },
+  }
+) }}
+{% endblock %}
